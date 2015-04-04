@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD1E5DDB-1DFF-462F-BDC5-520696D2DD55}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Labo.WebCrawler.Core</RootNamespace>
+    <AssemblyName>Labo.WebCrawler.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\CodeAnalysisRules\Common.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\CodeAnalysisRules\Common.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\ICrawlConfiguration.cs" />
+    <Compile Include="Configuration\InMemoryCrawlConfiguration.cs" />
+    <Compile Include="DefaultWebCrawlerVersionProvider.cs" />
+    <Compile Include="Filters\FuncUriCrawlFilter.cs" />
+    <Compile Include="Filters\FuncWebContentCrawlFilter.cs" />
+    <Compile Include="InMemoryCrawledUriHistoryRepository.cs" />
+    <Compile Include="InMemoryUriFrontier.cs" />
+    <Compile Include="IWebCrawlerVersionProvider.cs" />
+    <Compile Include="Modules\ActionWebContentProcessorModule.cs" />
+    <Compile Include="Modules\DefaultWebContentProcessorModuleFactory.cs" />
+    <Compile Include="Modules\HtmlAgilityPackWebContentLinkExtractorModule.cs" />
+    <Compile Include="Normalizer\DefaultUriNormalizer.cs" />
+    <Compile Include="Content\DefaultWebContent.cs" />
+    <Compile Include="Content\DefaultWebContentRetriever.cs" />
+    <Compile Include="Modules\IHtmlWebContentLinkExtractorModule.cs" />
+    <Compile Include="Task\IUriProcessorTask.cs" />
+    <Compile Include="Task\IUriProcessorTaskManager.cs" />
+    <Compile Include="Filters\IWebContentCrawlFilter.cs" />
+    <Compile Include="Protocol\Exceptions\NetworkProtocolProviderFactoryException.cs" />
+    <Compile Include="Protocol\INetworkProtocolProvider.cs" />
+    <Compile Include="Protocol\INetworkProtocolProviderFactory.cs" />
+    <Compile Include="Filters\IUriCrawlFilter.cs" />
+    <Compile Include="IUriFrontier.cs" />
+    <Compile Include="Normalizer\IUriNormalizer.cs" />
+    <Compile Include="Content\IWebContent.cs" />
+    <Compile Include="Modules\IWebContentProcessorModule.cs" />
+    <Compile Include="Modules\IWebContentProcessorModuleFactory.cs" />
+    <Compile Include="Content\IWebContentRetriever.cs" />
+    <Compile Include="ICrawledUriHistoryRepository.cs" />
+    <Compile Include="IWebCrawler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocol\IUrlProtocolParser.cs" />
+    <Compile Include="Protocol\IWebRequestFactory.cs" />
+    <Compile Include="Protocol\IWebRequestManager.cs" />
+    <Compile Include="Protocol\NetworkProtocolProviderFactory.cs" />
+    <Compile Include="Protocol\Providers\BaseProtocolProvider.cs" />
+    <Compile Include="Protocol\Providers\FtpProtocolProvider.cs" />
+    <Compile Include="Protocol\Providers\HttpProtocolProvider.cs" />
+    <Compile Include="Protocol\Providers\WebContentDataHelper.cs" />
+    <Compile Include="Protocol\UrlProtocolParser.cs" />
+    <Compile Include="Protocol\WebRequestFactory.cs" />
+    <Compile Include="Protocol\WebRequestManager.cs" />
+    <Compile Include="Task\UriProcessorTask.cs" />
+    <Compile Include="Task\MultiThreadedUriProcessorTaskManager.cs" />
+    <Compile Include="Task\UriProcessorTaskState.cs" />
+    <Compile Include="DefaultWebCrawler.cs" />
+    <Compile Include="Content\WebContentData.cs" />
+    <Compile Include="Content\WebContentInfo.cs" />
+    <Compile Include="UriFrontierEntry.cs" />
+    <Compile Include="WebPage\PageContent.cs" />
+    <Compile Include="WebPage\PageUriInfo.cs" />
+    <Compile Include="WebPage\WebPageInfo.cs" />
+    <Compile Include="WebPage\WebPageInfoCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
